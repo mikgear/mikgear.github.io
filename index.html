@@ -6,37 +6,71 @@
     <title>Mikgear</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;900&display=swap');
+        
         body { 
-            font-family: 'Inter', sans-serif; 
             background-color: #050505; 
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Animated Gradient Background */
+        .bg-gradient {
+            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 100%);
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+        }
+
+        /* Logo subtle pulse and float */
+        .hero-logo {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); filter: drop-shadow(0 0 20px rgba(255, 20, 147, 0.2)); }
+            50% { transform: translateY(-10px) scale(1.02); filter: drop-shadow(0 0 40px rgba(255, 20, 147, 0.4)); }
+        }
+
+        .text-reveal {
+            letter-spacing: 0.8em;
+            animation: tracking 3s ease-out forwards;
+        }
+
+        @keyframes tracking {
+            from { letter-spacing: 0.2em; opacity: 0; }
+            to { letter-spacing: 0.8em; opacity: 0.5; }
         }
     </style>
 </head>
-<body class="text-white antialiased overflow-hidden">
+<body class="text-white antialiased">
+
+    <div class="bg-gradient"></div>
 
     <main class="relative h-screen flex flex-col items-center justify-center px-6">
         
-        <div class="mb-12">
-            <img src="mikgear.png" alt="Mikgear Logo" class="h-40 md:h-64 drop-shadow-[0_0_40px_rgba(255,20,147,0.15)]">
+        <div class="hero-logo mb-10">
+            <img src="mikgear.png" alt="Mikgear Logo" class="h-44 md:h-72">
         </div>
 
-        <div class="text-center relative z-10">
-            <h1 class="text-7xl md:text-9xl font-black tracking-tighter uppercase italic leading-none">
+        <div class="text-center">
+            <h1 class="font-['Archivo_Black'] text-6xl md:text-9xl tracking-tighter uppercase italic leading-none mb-6">
                 MIKGEAR
             </h1>
-            <div class="mt-8 flex items-center justify-center gap-4">
-                <div class="h-[1px] w-8 bg-zinc-800"></div>
-                <p class="text-zinc-500 tracking-[0.8em] uppercase text-[10px] md:text-xs">
-                    Coming Soon
+            
+            <div class="flex items-center justify-center gap-6">
+                <div class="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#ff1493]"></div>
+                <p class="text-reveal uppercase text-[10px] md:text-xs font-medium text-white">
+                    COMING SOON
                 </p>
-                <div class="h-[1px] w-8 bg-zinc-800"></div>
+                <div class="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#ff1493]"></div>
             </div>
         </div>
 
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div class="w-[500px] h-[500px] bg-[#ff1493]/5 blur-[120px] rounded-full"></div>
-        </div>
+        <div class="absolute top-10 left-10 w-4 h-4 border-t border-l border-zinc-800"></div>
+        <div class="absolute top-10 right-10 w-4 h-4 border-t border-r border-zinc-800"></div>
+        <div class="absolute bottom-10 left-10 w-4 h-4 border-b border-l border-zinc-800"></div>
+        <div class="absolute bottom-10 right-10 w-4 h-4 border-b border-r border-zinc-800"></div>
 
     </main>
 
